@@ -4,7 +4,7 @@ import { Button } from '../button/button'
 import styles from './array.module.scss'
 
 export const Array = () => {
-  const [array, set, push, update, remove, filter, clear] = useArray([1, 2, 3, 4, 5, 6])
+  const { array, set, push, update, remove, filter, clear } = useArray([1, 2, 3, 4, 5, 6])
   return (
     <div>
       <p>{array.join(', ')}</p>

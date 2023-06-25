@@ -30,5 +30,5 @@ export const useArray = (initialArray) => {
     setArray([])
   }
 
-  return [array, set, push, update, remove, filter, clear]
+  return { array, set, push, update, remove, filter, clear }
 }
