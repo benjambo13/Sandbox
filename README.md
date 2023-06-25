@@ -6,15 +6,15 @@ This project uses Storybook to render the components. To start the storybook ser
 
 ## More about the components
 
-### Array
+### Array - useArray
 This component uses a custom hook called `useArray`. The aim of this hook is to abstract the lengthy lines of code when performing simple operations on Arrays.
 
-The hook can be initialised like:
+The hook can be initialised by:
 ```
 const { array, set, push, update, remove, filter, clear } = useArray([1, 2, 3, 4, 5, 6])
 ```
 
-The `useArray` hook takes 1 parameter, which is the initial array.
+The `useArray` hook takes one parameter, which is the initial array.
 The hook then returns the state of the current array in a variable caled `array` as well mutliple functions:
 
 `set(newArray)` - replaces the previous array with a `newArray`.
@@ -59,7 +59,7 @@ Otherwise, the `delay` timer will be restarted. This way a call to onChange will
 ```
 This debounced Input has a default delay of 1 second.
 
-### useMemo - Slow Function
+### Slow Function - useMemo
 
 This component uses the `useMemo` hook, and implements its main use case. When updating the number in the input, this runs a very slow function called `doubleNumber`. When changing the number you can feel a lag before the render completes. But when you click the button to change the text color to blue it does not lag because of the `useMemo` hook.
 
@@ -77,7 +77,7 @@ const value = useMemo(() => {
 ```
 Now `value` is only ever recalculated if the `num` variable changes, otherwise it returns the cached `value` from the previous render.
 
-### useMemo - Reference Equality 
+### Reference Equality - useMemo
 Another (less well known) use case for `useMemo` is reference equality. This is useful for when you want to compare two objects in JavaScript. If you have an object that is getting recreated on each render, it will always be not equal to the previous render. Even if its contents is the exact same! A good example of this use case is inside a `useEffect` hook. Say we have the following code:
 ```
 const myObject = { foo: 'bar' }
@@ -94,6 +94,40 @@ const myObject = useMemo(() => {
 ```
 P.S. remember to add any dependencies that the object relies on in the array of the second parameter.
 
-### Storage
-### Todo App
-### Toggle
+### Storage - useStorage
+This component uses the browser's `Local storage` and `Session storage` via the use of custom hooks named `useLocalStorage` and `useLocalStorage` respectively.
+
+The hook can be initialised by:
+```
+const [value, set, remove] = useLocalStorage(key, initialValue)
+const [value, set, remove] = useSessionStorage(key, initialValue)
+```
+
+The hooks take two parameters - the `key` and the `intialValue` of the item to be stored.
+
+The hooks then return three values. The first item is the current `value` of the item being stored. The second item is a `setting` function to changed the value being stored, and finally a `remove` function is returned to delete the item from storage.
+
+This is nice and easy to follow way of utilizing the browser's storage in applications.
+
+### useReducer - Todo App
+This is a simple Todo App that uses the `useReducer` hook. This hook is very similar to `Redux` and allows you to have stricter rules when handling data in your components.
+
+There are currently three actions on a todo object:
+1. add todo
+2. toggle todo
+3. delete todo
+
+Using `useReducer` means we only need to pass one function into child components `dispatch`, instead of having to pass one for `adding`, one for `toggling` and one for `deleting`. 
+
+### Toggle - useToggle
+This is a simple toggle component that uses a custom hook called `useToggle`. 
+
+The hook can be initialised by:
+```
+const { value, toggleValue } = useToggle(false)
+```
+The `useToggle` hook takes one parameter, which is the initial toggle boolean value.
+
+It returns the `value` of the toggle and a `toggleValue` function. If you call `toggleValue` with no paramters it will set the negative of the current state (true to false or false to true), or you can pass in `true` or `false` to set it directly.
+
+This `useToggle` takes a fair amount of boiler plate code out of you components.
