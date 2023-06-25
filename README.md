@@ -33,7 +33,31 @@ The hook then returns the state of the current array in a variable caled `array`
 Lots more functions can be added to this `useArray` hook.
 
 ### Button
+A basic button component that changes colour based on the `type` property.
+
+```
+<Button type='primary' text='Click Me' onClick={func}>
+```
+
+The type can be either `primary` (Blue), `secondary` (Grey) or `danger` (Red).
+
 ### Input
+A basic styled text input that takes 3 properties.
+
+```
+<Input onChange={func} value='value' label='label' >
+```
+
+Label is defaulted to `label`
+
+### Debounced Input
+A debounced Input with a default timeout of 1 second. Debouncing prevents onChange from triggering too often. It no calls to `onChange` occur in `delay` amount of time, `onChange` will then run.
+Otherwise, the `delay` timer will be restarted. This way a call to onChange will not occur on every key stroke.
+
+```
+<DebouncedIput onChange={func} value='value' label='label' delay=1000>
+```
+
 ### Memo
 ### Storage
 ### Todo App

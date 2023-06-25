@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import styles from './input.module.scss'
 
-export const DebouncedInput = () => {
-  const [count, setCount] = useState(0)
-
-  const debounce = (cb, delay = 1000) => {
+export const DebouncedInput = ({ callback, value, label, delay = 1000 }) => {
+  const debounce = (cb) => {
     let timeout
 
     return (...args) => {
@@ -15,13 +13,12 @@ export const DebouncedInput = () => {
     }
   }
 
-  const updateDebouncedCalls = debounce(() => {
-    setCount(prev => prev + 1)
-    console.log('Function call count:', count)
+  const onChange = debounce((...args) => {
+    callback(...args)
   })
 
   return(
-    <Input onChange={updateDebouncedCalls} />
+    <Input onChange={onChange} label={label} value={value} />
   )
 }
 

@@ -5,6 +5,12 @@ export default {
   component: DebouncedInput
 }
 
+const onChange = () => {
+  console.log('onChange called')
+}
+
 export const Example = {
-  args: {}
+  args: {
+    callback: onChange,
+  }
 }
