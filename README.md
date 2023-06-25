@@ -18,11 +18,17 @@ The `useArray` hook takes 1 parameter, which is the initial array.
 The hook then returns the state of the current array in a variable caled `array` as well mutliple functions:
 
 `set(newArray)` - replaces the previous array with a `newArray`.
+
 `push(item)` - adds an `item` to the end of the array.
+
 `update(index, item)` - swap the item at `index` with a new `item`.
+
 `remove(index)` - remove the item at `index`.
+
 `filter(function)` - filter the array based on a condition of a `function`. e.g. `const function = num => num > 3`.
+
 `clear()` - set the array to an empty array `[]`.
+
 
 Lots more functions can be added to this `useArray` hook.
 
