@@ -51,14 +51,16 @@ A basic styled text input that takes 3 properties.
 Label is defaulted to `label`
 
 ### Debounced Input
-A debounced Input with a default timeout of 1 second. Debouncing prevents onChange from triggering too often. It no calls to `onChange` occur in `delay` amount of time, `onChange` will then run.
+Debouncing prevents onChange from triggering too often. It no calls to `onChange` occur in `delay` amount of time, `onChange` will then run.
 Otherwise, the `delay` timer will be restarted. This way a call to onChange will not occur on every key stroke.
 
 ```
-<DebouncedIput onChange={func} value='value' label='label' delay=1000>
+<DebouncedInput onChange={func} value='value' label='label' delay=1000 />
 ```
+This debounced Input has a default delay of 1 second.
 
-### useMemo - Slow Function
+### useMemo - Slow Function
+
 This component uses the `useMemo` hook, and implements its main use case. When updating the number in the input, this runs a very slow function called `doubleNumber`. When changing the number you can feel a lag before the render completes. But when you click the button to change the text color to blue it does not lag because of the `useMemo` hook.
 
 In short, `useMemo` caches a value and checks on each render if the value has been cached or it needs to run the function again. It is particularly useful when said function is very slow.
@@ -90,7 +92,7 @@ const myObject = useMemo(() => {
   return { foo: 'bar' }
 }, [])
 ```
-P.S. remember to add an dependencies that the object relies on in the array of the second parameter.
+P.S. remember to add any dependencies that the object relies on in the array of the second parameter.
 
 ### Storage
 ### Todo App
