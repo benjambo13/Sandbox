@@ -9,6 +9,7 @@ export const SlowFunctionMemo = () => {
   const [isBlue, toggleBlue] = useToggle(false)
 
   const doubleNumber = useMemo(() => {
+    console.log('doubling')
     return slowFunction(number)
   }, [number])
 
